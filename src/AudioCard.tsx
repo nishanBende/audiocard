@@ -64,6 +64,8 @@ export interface AudioCardProps {
   source: string
   /** Optional title of the song or podcast episode */
   title?: string
+
+  onPlay?: () => any
 }
 
 const canonicalWidth = 750
@@ -84,7 +86,8 @@ export function AudioCard({
   skipBackSeconds,
   skipForwardSeconds,
   source,
-  title
+  title,
+  onPlay
 }: AudioCardProps) {
   const {
     playerRef,
@@ -110,6 +113,7 @@ export function AudioCard({
       style={{ height }}
     >
       <audio
+        onPlay={onPlay}
         src={source}
         ref={playerRef}
         style={{ display: 'none' }}
